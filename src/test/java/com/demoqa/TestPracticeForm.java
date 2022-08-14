@@ -39,12 +39,10 @@ public class TestPracticeForm {
         $(byText("Sports")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/JSON_Momoa.jpg"));
         $("#currentAddress").setValue("currentAddress");
-        $("#state").scrollTo();
-        $("#state").click();
-        $(byText("Haryana")).click();
+        $("#state").scrollTo().click();
+        $("#state").$(byText("Haryana")).click();
         $("#city").click();
-        $(byText("Karnal")).click();
-        $("#submit").scrollTo();
+        $("#city").$(byText("Karnal")).click();
         $("#submit").pressEnter();
 
 
