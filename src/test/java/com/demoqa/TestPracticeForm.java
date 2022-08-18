@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -26,28 +26,24 @@ public class TestPracticeForm {
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Navi");
         $("#userEmail").setValue("Ivan@navi.com");
-        $(byText("Female")).click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("8999000881");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
         $(".react-datepicker__month-select").selectOption(5);
-        $(".react-datepicker__year-select").click();
         $(".react-datepicker__year-select").selectOption("1994");
         $(".react-datepicker__day--023").click();
         $("#subjectsInput").setValue("Physics");
         $("#subjectsInput").pressEnter();
-        $(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/JSON_Momoa.jpg"));
         $("#currentAddress").setValue("currentAddress");
-        $("#state").scrollTo();
-        $("#state").click();
-        $(byText("Haryana")).click();
+        $("#state").scrollTo().click();
+        $("#state").$(byText("Haryana")).click();
         $("#city").click();
-        $(byText("Karnal")).click();
-        $("#submit").scrollTo();
+        $("#city").$(byText("Karnal")).click();
         $("#submit").pressEnter();
 
-
+        $(".modal-dialog").should(appear);
         $(".modal-header").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(
                 text("Ivan Navi"),
