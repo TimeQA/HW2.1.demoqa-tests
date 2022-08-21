@@ -1,48 +1,50 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.TestPracticeFormPage;
-import com.demoqa.pages.components.ResultComponent;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.demoqa.tests.TestData.*;
 
-public class TestPracticeFormPageObject {
-    TestPracticeFormPage testPracticFormPage = new TestPracticeFormPage();
+public class TestPracticeFormPageObjectWithData extends TestBase{
+    TestPracticeFormPage testPracticeFormPage = new TestPracticeFormPage();
 
-    @BeforeAll
-    static void configure() {
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-    }
+//    String firstName,
+//            lastName,
+//            email,
+//            number,
+//            currentAddress;
+//
+//    @BeforeEach
+//    void prepareTestData() {
+//        firstName = "Ivan";
+//        lastName = "Navi";
+//        email = "Ivan@navi.com";
+//        number = "8999000881";
+//        currentAddress = "currentAddress";
+//    }
 
     @Test
     void practiceFormTest() {
-        testPracticFormPage.openPage()
-                .setFirstName("Ivan")
-                .setLastName("Navi")
-                .setEmail("Ivan@navi.com")
+        testPracticeFormPage.openPage()
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setEmail(email)
                 .setGenter("Female")
-                .setNumber("8999000881")
+                .setNumber(number)
                 .setBirthDate("5", "June", "1994")
                 .setSubjects("Physics")
                 .setHobbies("Sports")
                 .setPathFile("src/test/resources/JSON_Momoa.jpg")
-                .setAddress("currentAddress")
+                .setAddress(currentAddress)
                 .setState("Haryana")
                 .setCity("Karnal");
         $("#submit").pressEnter();
 
 
-        testPracticFormPage.checkResultVisible();
-
-        testPracticFormPage.checkResult("Student Name", "Ivan Navi")
+        testPracticeFormPage.checkResultVisible();
+        testPracticeFormPage.checkResult("Student Name", "Ivan Navi")
                 .checkResult("Student Email", "Ivan@navi.com")
                 .checkResult("Gender", "Female")
                 .checkResult("Mobile", "8999000881")
@@ -57,7 +59,7 @@ public class TestPracticeFormPageObject {
 
     @Test
     void practiceFormTestMini() {
-        testPracticFormPage.openPage()
+        testPracticeFormPage.openPage()
                 .setFirstName("Ivan")
                 .setLastName("Navi")
                 .setGenter("Female")

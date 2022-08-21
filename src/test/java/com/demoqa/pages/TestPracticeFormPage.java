@@ -15,9 +15,9 @@ public class TestPracticeFormPage {
 
     // Elements
 
-    private CalendarComponent calendarComponent = new CalendarComponent();
-    private ResultComponent resultComponent = new ResultComponent();
-    private SelenideElement
+    private final CalendarComponent calendarComponent = new CalendarComponent();
+    private final ResultComponent resultComponent = new ResultComponent();
+    private final SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
